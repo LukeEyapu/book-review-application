@@ -30,11 +30,11 @@ public_users.post("/register", (req,res) => {
  
 });
 
-// // Get the book list available in the shop
-// public_users.get('/',async (req, res) => {
-//     await res.send(JSON.stringify(books,null,4));
+// Get the book list available in the shop
+public_users.get('/',async (req, res) => {
+    await res.send(JSON.stringify(books,null,4));
    
-//  });
+ });
 
 
 // Get the book list available in the shop using async await
@@ -56,13 +56,13 @@ public_users.get('/', (req, res) => {
 });
 
 
-// // Get book details based on ISBN
-// public_users.get('/isbn/:isbn',async (req, res)=>{
+// Get book details based on ISBN
+public_users.get('/isbn/:isbn',async (req, res)=>{
   
-//   const ISBN = req.params.isbn;
-//   await res.send(books[ISBN]);    
+  const ISBN = req.params.isbn;
+  await res.send(books[ISBN]);    
  
-//  });
+ });
   
 // Get book details based on ISBN using Promises
 public_users.get('/isbn/:isbn', (req, res) =>{
@@ -115,30 +115,30 @@ public_users.get('/author/:author',async (req, res) => {
       res.status(400).json({error:"Book not found"})
     });
  
-  //let new_books = {}
-  //const new_author = req.params.author;
-  //let i=1;
-  //for(let bookid in books){
-   //   if(books[bookid].author === new_author ){
-    //    new_books[i++] = books[bookid];
-    //  }
-    //}
-    //await res.send(JSON.stringify(new_books))
+  let new_books = {}
+  const new_author = req.params.author;
+  let i=1;
+  for(let bookid in books){
+     if(books[bookid].author === new_author ){
+       new_books[i++] = books[bookid];
+     }
+    }
+    await res.send(JSON.stringify(new_books))
   
 });
 
 // Get all books based on title
 public_users.get('/title/:title',async (req, res) => {
   
-  //let new_books = {}
-  //const re_title = req.params.title;
-  //let i = 1;
-  //for(bookid in books){
-    //  if(books[bookid].title === re_title ){
-      //  new_books[i++] = books[bookid]
-      //}
-  //}
-  //await res.send(JSON.stringify(new_books))
+  let new_books = {}
+  const re_title = req.params.title;
+  let i = 1;
+  for(bookid in books){
+     if(books[bookid].title === re_title ){
+       new_books[i++] = books[bookid]
+      }
+  }
+  await res.send(JSON.stringify(new_books))
 
   const title = req.params.title;
   const booksBasedOnTitle = (booktitle) => {
